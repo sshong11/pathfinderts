@@ -82,3 +82,15 @@ function updateNeighbors(grid: Node[][], node: Node) {
 function sortNodes(unvisited: Node[]) {
     unvisited.sort((a, b) => a.distance - b.distance)
 }
+
+
+export function getShortestPath(end: Node): Node[] {
+    const bestPathOrder = []
+    let current = end
+    while (current !== null) {
+        bestPathOrder.unshift(current)
+        current = current.previous
+    }
+
+    return bestPathOrder
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import Node from '../components/Node'
-import { dijkstra } from '../algos/dijkstra'
+import { dijkstra, getShortestPath } from '../algos/dijkstra'
 
 const START_ROW = 1
 const START_COL = 1
@@ -56,8 +56,23 @@ function Pathfinder() {
     const [grid, setGrid] = React.useState(createGrid())
 
 
-    function animatePathfinder(visitedNodesOrdered: Node[]) {
+    function animatePathfinder(visitedNodesOrdered: Node[], nodesShortestPath: Node[]) {
         for (let i = 0; i <= visitedNodesOrdered.length; i++) {
+
+            // shortest path animation
+            if (i === visitedNodesOrdered.length) {
+                setTimeout(() => {
+                    for (let i = 0; i < nodesShortestPath.length; i++) {
+                        setTimeout(() => {
+                            const node = nodesShortestPath[i]
+                            document.getElementById(`node-${node.row}-${node.col}`)!.className = "node node-best"
+                        }, 50 * i)
+                    }
+                }, 15 * i)
+                return
+            }
+
+            // dijkstra animation
             setTimeout(() => {
                 const node = visitedNodesOrdered[i]
                 if ((node.row === START_ROW && node.col === START_COL) || (node.row === END_ROW && node.col === END_COL)) {
@@ -74,7 +89,8 @@ function Pathfinder() {
         const start = grid[START_ROW][START_COL]
         const end = grid[END_ROW][END_COL]
         const visitedNodesOrdered: any = dijkstra(grid, start, end)
-        animatePathfinder(visitedNodesOrdered)
+        const nodesShortestPath = getShortestPath(end)
+        animatePathfinder(visitedNodesOrdered, nodesShortestPath)
     }
 
 
