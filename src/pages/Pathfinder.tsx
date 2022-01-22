@@ -52,6 +52,36 @@ function Pathfinder() {
 
     }
 
+    /////////////////////////////////////////////////////////////
+    // mouse event listeners
+
+    const [mousePressed, setMousePressed] = React.useState(false)
+
+    const gridWithWall = (grid: Node[][], row: number, col: number) => {
+        const newGrid = grid.slice()
+        const node = newGrid[row][col]
+        const newNode = {...node, isWall: !node.isWall}
+        newGrid[row][col] = newNode
+        return newGrid
+    }
+
+    function handleMouseDown(row: number, col: number) {
+        const newGrid = gridWithWall(grid, row, col)
+        setMousePressed(true)
+        setGrid(newGrid)
+    }
+
+    function handleMouseEnter(row: number, col: number) {
+        if (!mousePressed) return
+        const newGrid = gridWithWall(grid, row, col)
+        setGrid(newGrid)
+    }
+
+    function handleMouseUp() {
+        setMousePressed(false)
+    }
+    /////////////////////////////////////////////////////////////
+
 
     const [grid, setGrid] = React.useState(createGrid())
 
@@ -109,6 +139,9 @@ function Pathfinder() {
                             isStart={isStart}
                             isEnd={isEnd}
                             isWall={isWall}
+                            onMouseDown={(row: number, col: number) => handleMouseDown(row, col)}
+                            onMouseEnter={(row: number, col: number) => handleMouseEnter(row, col)}
+                            onMouseUp={() => handleMouseUp()}
                         />)
                     })}
                 </div>

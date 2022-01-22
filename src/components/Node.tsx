@@ -4,9 +4,12 @@ interface AppProps {
     isStart: boolean,
     isEnd: boolean,
     isWall: boolean,
+    onMouseDown: any,
+    onMouseEnter: any,
+    onMouseUp: any,
 }
 
-function Node({row, col, isStart, isEnd, isWall}: AppProps) {
+function Node({row, col, isStart, isEnd, isWall, onMouseDown, onMouseEnter, onMouseUp}: AppProps) {
 
     let nodeClass: string = ''
 
@@ -24,6 +27,9 @@ function Node({row, col, isStart, isEnd, isWall}: AppProps) {
     return <div 
         className={`node ${nodeClass}`}
         id={`node-${row}-${col}`}
+        onMouseDown={() => onMouseDown(row, col)}
+        onMouseEnter={() => onMouseEnter(row, col)}
+        onMouseUp={() => onMouseUp(row, col)}
     ></div>
 }
 

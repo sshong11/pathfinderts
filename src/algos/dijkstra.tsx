@@ -16,7 +16,7 @@ export function dijkstra(grid: Node[][], start: Node, end: Node) {
     const unvisitedNodes = getAllNodes(grid)
     start.distance = 0
 
-    while (unvisitedNodes.length != 0) {
+    while (unvisitedNodes.length !== 0) {
         sortNodes(unvisitedNodes)
         const closeNode: any = unvisitedNodes.shift()
         if (closeNode.isWall) continue
@@ -24,7 +24,7 @@ export function dijkstra(grid: Node[][], start: Node, end: Node) {
         closeNode.visited = true
         visitedNodesOrdered.push(closeNode)
 
-        if (closeNode == end) {
+        if (closeNode === end) {
             return visitedNodesOrdered
         }
         updateNeighbors(grid, closeNode)

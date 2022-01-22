@@ -1,8 +1,13 @@
+.grid {
+    font-size: 0;
+}
+
 .node {
     width: 20px;
     height: 20px;
     border: 1px solid black;
     display: inline-block;
+    margin: 1px;
 }
 
 .node-start {
