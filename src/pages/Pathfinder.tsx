@@ -95,7 +95,11 @@ function Pathfinder() {
                     for (let i = 0; i < nodesShortestPath.length; i++) {
                         setTimeout(() => {
                             const node = nodesShortestPath[i]
+                            if ((node.row === START_ROW && node.col === START_COL) || (node.row === END_ROW && node.col === END_COL)) {
+                                return
+                            } else {
                             document.getElementById(`node-${node.row}-${node.col}`)!.className = "node node-best"
+                            }
                         }, 50 * i)
                     }
                 }, 15 * i)
@@ -123,9 +127,22 @@ function Pathfinder() {
         animatePathfinder(visitedNodesOrdered, nodesShortestPath)
     }
 
+    function clearGrid() {
+        setGrid(createGrid())
+        for (let i = 0; i < grid.length; i++) {
+            for (let j = 0; j < grid[i].length; j++) {
+                if ((grid[i][j].row === START_ROW && grid[i][j].col === START_COL) || (grid[i][j].row === END_ROW && grid[i][j].col === END_COL)) {
+                    continue
+                }
+                document.getElementById(`node-${grid[i][j].row}-${grid[i][j].col}`)!.className = "node"
+            }
+        }
+    }
+
 
     return <div className="pathfinder">
         <button onClick={() => startAnimation()}>Dijkstra</button>
+        <button onClick={() => clearGrid()}>Clear Grid</button>
         <div className="grid">
             {grid.map((row, rowKey) => {
                 return <div key={rowKey}>

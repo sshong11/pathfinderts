@@ -1,3 +1,7 @@
+body {
+    background-color: #f2fbfe;
+}
+
 .grid {
     font-size: 0;
 }
@@ -5,27 +9,33 @@
 .node {
     width: 20px;
     height: 20px;
-    border: 1px solid black;
+    border: 1px solid #86d5de;
     display: inline-block;
     margin: 1px;
 }
 
 .node-start {
-    background-color: green;
+    background-color: #f8a7cd;
 }
   
 .node-end {
-    background-color: red;
+    background-color: #012056;
 }
   
 .node-visited {
-    background-color: plum;
+    background-color: #86d5de;
 }
   
 .node-best {
-    background-color: blue;
+    background-color: #0d59e3;
 }
   
 .node-wall {
     background-color: gray;
+}
+
+/* NAV */
+.nav {
+    background-color: #0967e4;
+    color: #f2fbfe;
 }
