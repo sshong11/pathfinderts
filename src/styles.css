@@ -1,0 +1,26 @@
+.node {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    display: inline-block;
+}
+
+.node-start {
+    background-color: green;
+}
+  
+.node-end {
+    background-color: red;
+}
+  
+.node-visited {
+    background-color: plum;
+}
+  
+.node-best {
+    background-color: blue;
+}
+  
+.node-wall {
+    background-color: gray;
+}
