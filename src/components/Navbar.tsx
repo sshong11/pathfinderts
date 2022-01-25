@@ -1,6 +1,6 @@
 function Navbar() {
     return <div className="nav">
-        <h1>Pathfinder</h1>
+        <a id="title">Pathfinder</a>
     </div>
 }
 

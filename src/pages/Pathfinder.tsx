@@ -2,10 +2,12 @@ import React from 'react'
 import Node from '../components/Node'
 import { dijkstra, getShortestPath } from '../algos/dijkstra'
 
-const START_ROW = 1
-const START_COL = 1
-const END_ROW = 5
-const END_COL = 15
+var START_ROW: any = 1
+var START_COL: any = 1
+var END_ROW: any = 5
+var END_COL: any = 15
+
+
 
 function Pathfinder() {
 
@@ -134,15 +136,84 @@ function Pathfinder() {
                 if ((grid[i][j].row === START_ROW && grid[i][j].col === START_COL) || (grid[i][j].row === END_ROW && grid[i][j].col === END_COL)) {
                     continue
                 }
-                document.getElementById(`node-${grid[i][j].row}-${grid[i][j].col}`)!.className = "node"
+                document.getElementById(`node-${grid[i][j].row}-${grid[i][j].col}`)!.className = "node node"
             }
         }
     }
 
+    function setGridSize(e: React.ChangeEvent<HTMLInputElement>) {
+        document.getElementById(`node-${START_ROW}-${START_COL}`)!.className = "node node"
+        document.getElementById(`node-${END_ROW}-${END_COL}`)!.className = "node node"
+
+        if (e.target.name === "startRow") {
+            START_ROW = e.target.value
+        } else if (e.target.name === "startCol") {
+            START_COL = e.target.value
+        } else if (e.target.name ==="endRow") {
+            END_ROW = e.target.value
+        } else if (e.target.name ==="endCol") {
+            END_COL = e.target.value
+        }
+
+        document.getElementById(`node-${START_ROW}-${START_COL}`)!.className = "node node-start"
+        document.getElementById(`node-${END_ROW}-${END_COL}`)!.className = "node node-end"
+    }
+
+
+    function inputGridSize() {
+        return (<div className="gridInput">
+            <div className="setStart">
+                <h3>Set Start Point</h3>
+                <input
+                    type="number"
+                    name="startRow"
+                    id="startRow"
+                    min="0"
+                    max="20"
+                    defaultValue={START_ROW}
+                    onChange={setGridSize}
+                ></input>
+                <input
+                    type="number"
+                    name="startCol"
+                    id="startCol"
+                    min="0"
+                    max="20"
+                    defaultValue={START_COL}
+                    onChange={setGridSize}
+                ></input>
+            </div>
+
+            <div className="setEnd">
+                <h3>Set End Point</h3>
+                <input
+                    type="number"
+                    name="endRow"
+                    id="endRow"
+                    min="0"
+                    max="20"
+                    defaultValue={END_ROW}
+                    onChange={setGridSize}
+                ></input>
+                <input
+                    type="number"
+                    name="endCol"
+                    id="endCol"
+                    min="0"
+                    max="20"
+                    defaultValue={END_COL}
+                    onChange={setGridSize}
+                ></input>
+            </div>
+        </div>)
+    }
 
     return <div className="pathfinder">
-        <button onClick={() => startAnimation()}>Dijkstra</button>
-        <button onClick={() => clearGrid()}>Clear Grid</button>
+        <div className="menu">
+            <button onClick={() => startAnimation()}>Dijkstra</button>
+            <button onClick={() => clearGrid()}>Clear Grid</button>
+            {inputGridSize()}
+        </div>
         <div className="grid">
             {grid.map((row, rowKey) => {
                 return <div key={rowKey}>
