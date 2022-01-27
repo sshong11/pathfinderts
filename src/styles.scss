@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
+
 body {
     background-color: #f2fbfe;
+    font-family: Exo;
 }
 
 .grid {
@@ -13,6 +16,8 @@ body {
     border: 1px solid #86d5de;
     display: inline-block;
     margin: 1px;
+
+    transition: 75ms;
 
     &:hover {
         opacity: 0.6;
@@ -51,7 +56,7 @@ body {
 }
   
 .node-wall {
-    background-color: gray;
+    background-color: #d5c484;
 }
 
 /* NAV */
