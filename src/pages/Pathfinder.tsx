@@ -2,14 +2,19 @@ import React from 'react'
 import Node from '../components/Node'
 import { dijkstra, getShortestPath } from '../algos/dijkstra'
 
-var START_ROW: any = 1
-var START_COL: any = 1
-var END_ROW: any = 5
-var END_COL: any = 15
+var START_ROW2: any = 7
+var START_COL2: any = 9
+var END_ROW2: any = 7
+var END_COL2: any = 34
 
 
 
 function Pathfinder() {
+
+    const [START_ROW, setStartRow] = React.useState(7)
+    const [START_COL, setStartCol] = React.useState(9)
+    const [END_ROW, setEndRow] = React.useState(7)
+    const [END_COL, setEndCol] = React.useState(34)
 
     type Node = {
         row: number,
@@ -39,8 +44,8 @@ function Pathfinder() {
 
     function createGrid() {
         const list = []
-        const rowLength = 10
-        const colLength = 20
+        const rowLength = 17
+        const colLength = 43
 
         for (let i = 0; i < rowLength; i++) {
             const temp = []
@@ -142,21 +147,40 @@ function Pathfinder() {
     }
 
     function setGridSize(e: React.ChangeEvent<HTMLInputElement>) {
-        document.getElementById(`node-${START_ROW}-${START_COL}`)!.className = "node node"
-        document.getElementById(`node-${END_ROW}-${END_COL}`)!.className = "node node"
+        document.getElementById(`node-${START_ROW2}-${START_COL2}`)!.className = "node node"
+        document.getElementById(`node-${END_ROW2}-${END_COL2}`)!.className = "node node"
+
+
+        // const newGrid = grid.slice()
+        // const node = newGrid[START_ROW][START_COL]
+        // node.isStart = false
+        // newGrid[START_ROW][START_COL] = node
+
 
         if (e.target.name === "startRow") {
-            START_ROW = e.target.value
+            START_ROW2 = e.target.value
+            setStartRow(parseInt(e.target.value))
         } else if (e.target.name === "startCol") {
-            START_COL = e.target.value
+            START_COL2 = e.target.value
+            setStartCol(parseInt(e.target.value))
         } else if (e.target.name ==="endRow") {
-            END_ROW = e.target.value
+            END_ROW2 = e.target.value
+            setEndRow(parseInt(e.target.value))
         } else if (e.target.name ==="endCol") {
-            END_COL = e.target.value
+            END_COL2 = e.target.value
+            setEndCol(parseInt(e.target.value))
         }
 
-        document.getElementById(`node-${START_ROW}-${START_COL}`)!.className = "node node-start"
-        document.getElementById(`node-${END_ROW}-${END_COL}`)!.className = "node node-end"
+        document.getElementById(`node-${START_ROW2}-${START_COL2}`)!.className = "node node-start"
+        document.getElementById(`node-${END_ROW2}-${END_COL2}`)!.className = "node node-end"
+
+
+        // const newNode = newGrid[START_ROW][START_COL]
+        // newNode.isStart = true
+        // newGrid[START_ROW][START_COL] = newNode
+
+        // setGrid(newGrid)
+
     }
 
 
@@ -169,7 +193,7 @@ function Pathfinder() {
                     name="startRow"
                     id="startRow"
                     min="0"
-                    max="20"
+                    max={grid.length - 1}
                     defaultValue={START_ROW}
                     onChange={setGridSize}
                 ></input>
@@ -178,7 +202,7 @@ function Pathfinder() {
                     name="startCol"
                     id="startCol"
                     min="0"
-                    max="20"
+                    max={grid[0].length - 1}
                     defaultValue={START_COL}
                     onChange={setGridSize}
                 ></input>
@@ -191,7 +215,7 @@ function Pathfinder() {
                     name="endRow"
                     id="endRow"
                     min="0"
-                    max="20"
+                    max={grid.length - 1}
                     defaultValue={END_ROW}
                     onChange={setGridSize}
                 ></input>
@@ -200,7 +224,7 @@ function Pathfinder() {
                     name="endCol"
                     id="endCol"
                     min="0"
-                    max="20"
+                    max={grid[0].length - 1}
                     defaultValue={END_COL}
                     onChange={setGridSize}
                 ></input>

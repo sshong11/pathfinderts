@@ -1,0 +1,146 @@
+body {
+    background-color: #f2fbfe;
+}
+
+.grid {
+    font-size: 0;
+    margin-top: 3vw;
+}
+
+.node {
+    width: 2vw;
+    height: 2vw;
+    border: 1px solid #86d5de;
+    display: inline-block;
+    margin: 1px;
+
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+@media screen and (max-width: 1225px) {
+    .node {
+        width: 1vw;
+        height: 1vw;
+    }
+}
+
+.node-start {
+    background-color: #f8a7cd;
+}
+  
+.node-end {
+    background-color: #012056;
+}
+  
+.node-visited {
+    background-color: #86d5de;
+
+    animation-name: visiting;
+    animation-timing-function: ease-out;
+    animation-duration: 4s;
+}
+  
+.node-best {
+    animation-name: shortest;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    background-color: #0d59e3;
+}
+  
+.node-wall {
+    background-color: gray;
+}
+
+/* NAV */
+.nav {
+    background-color: #0967e4;
+    color: #f2fbfe;
+}
+
+#title {
+    font-size: 2vw;
+    font-weight: 700;
+    position: absolute;
+    padding: 10px 50px;
+    left: 0px;
+}
+
+/********************/
+
+.gridInput {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: #f2fbfe;
+
+    div {
+        margin: 0 2vw 0 2vw;
+    }
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #0967e4;
+    padding-bottom: 1vw;
+    
+    button {
+        margin: 0 2vw 0 2vw;
+        border: none;
+        background-color: #012056;
+        color: #f2fbfe;
+        border-radius: 10px;
+        padding: 1vw;
+        font-size: larger;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+            background-color: #ffadbd;
+            transform: scale(1.1)
+        }
+    }
+}
+
+@keyframes visiting {
+    0% {
+        transform: scale(0.6);
+        background-color: #ffccd5;
+    }
+
+    5% {
+        background-color: #faafcc;
+    }
+
+    10% {
+        background-color: #e8a3cc;
+    }
+
+    15% {
+        background-color: #7577d9;
+    }
+
+    40% {
+        transform: scale(1);
+        background-color: #86d5de;
+    }
+}
+
+@keyframes shortest {
+    0% {
+        transform: scale(1.1)
+    }
+
+    10% {
+        transform: scale(1.2)
+    }
+
+    50% {
+        transform: scale(1)
+    }
+}
