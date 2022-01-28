@@ -1,6 +1,7 @@
 import React from 'react'
 import Node from '../components/Node'
 import { dijkstra, getShortestPath } from '../algos/dijkstra'
+import CreatePost from '../components/CreatePost'
 
 var START_ROW2: any = 7
 var START_COL2: any = 9
@@ -259,6 +260,7 @@ function Pathfinder() {
                 </div>
             })}
         </div>
+        <CreatePost />
     </div>
 }
 
