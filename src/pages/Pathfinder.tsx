@@ -190,7 +190,7 @@ function Pathfinder() {
         return (<div className="gridInput">
             <div className="setStart">
                 <h3>Set Start Point</h3>
-                X: <input
+                <span>X: </span><input
                     type="number"
                     name="startCol"
                     id="startCol"
@@ -199,7 +199,7 @@ function Pathfinder() {
                     defaultValue={START_COL}
                     onChange={setGridSize}
                 ></input>
-                Y: <input
+                <span> Y: </span><input
                     type="number"
                     name="startRow"
                     id="startRow"
@@ -212,7 +212,7 @@ function Pathfinder() {
 
             <div className="setEnd">
                 <h3>Set End Point</h3>
-                X: <input
+                <span>X: </span><input
                     type="number"
                     name="endCol"
                     id="endCol"
@@ -221,7 +221,7 @@ function Pathfinder() {
                     defaultValue={END_COL}
                     onChange={setGridSize}
                 ></input>
-                Y: <input
+                <span> Y: </span><input
                     type="number"
                     name="endRow"
                     id="endRow"
