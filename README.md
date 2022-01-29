@@ -27,6 +27,6 @@ Visualizes algorithms such as Dijkstras and A* (A Star) to find the shortest/bes
 
 Idea inspiration and things that helped a lot: 
 https://www.youtube.com/watch?v=msttfIHHkak
-https://github.com/Andreiosup/PathfindingVisualizer
+https://www.youtube.com/watch?v=bi_2ftGYxZ0
 https://www.youtube.com/watch?v=pVfj6mxhdMw
 https://www.youtube.com/watch?v=-L-WgKMFuhE
