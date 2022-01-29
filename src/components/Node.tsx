@@ -26,21 +26,6 @@ function Node({row, col, isStart, isEnd, isWall, onMouseDown, onMouseEnter, onMo
         nodeClass = 'node'
     }
 
-
-    // return <div 
-    //     className={`node ${nodeClass}`}
-    //     id={`node-${row}-${col}`}
-    //     onMouseDown={() => 
-    //         {if (nodeClass === 'node-start') {
-    //             return
-    //         } else {
-    //             onMouseDown(row, col)
-    //         }
-    //     }}
-    //     onMouseEnter={() => onMouseEnter(row, col)}
-    //     onMouseUp={() => onMouseUp(row, col)}
-    // ></div>
-
     return <div 
         className={`node ${nodeClass}`}
         id={`node-${row}-${col}`}

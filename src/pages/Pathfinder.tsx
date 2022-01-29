@@ -166,13 +166,6 @@ function Pathfinder() {
         document.getElementById(`node-${START_ROW2}-${START_COL2}`)!.className = "node node"
         document.getElementById(`node-${END_ROW2}-${END_COL2}`)!.className = "node node"
 
-
-        // const newGrid = grid.slice()
-        // const node = newGrid[START_ROW][START_COL]
-        // node.isStart = false
-        // newGrid[START_ROW][START_COL] = node
-
-
         if (e.target.name === "startRow") {
             START_ROW2 = e.target.value
             setStartRow(parseInt(e.target.value))
@@ -189,13 +182,6 @@ function Pathfinder() {
 
         document.getElementById(`node-${START_ROW2}-${START_COL2}`)!.className = "node node-start"
         document.getElementById(`node-${END_ROW2}-${END_COL2}`)!.className = "node node-end"
-
-
-        // const newNode = newGrid[START_ROW][START_COL]
-        // newNode.isStart = true
-        // newGrid[START_ROW][START_COL] = newNode
-
-        // setGrid(newGrid)
 
     }
 
