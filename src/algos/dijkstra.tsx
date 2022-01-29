@@ -7,6 +7,9 @@ type Node = {
     visited: boolean,
     isWall: boolean,
     previous: any,
+    fScore: any,
+    gScore: any,
+    hScore: any
 }
 
 

@@ -78,8 +78,8 @@ function CreatePost() {
     }
 
     const loaded = (): any => {
-        return posts.map((post: any) => (
-            <div>
+        return posts.map((post: any, key) => (
+            <div key={key}>
                 <h1>{post.subject}</h1>
                 <button onClick={() => deletePost(post)} id="delete">Delete</button>
                 <button onClick={() => setShowEdit(true)} id="edit">Edit</button>

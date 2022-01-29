@@ -7,6 +7,9 @@ interface AppProps {
     onMouseDown: any,
     onMouseEnter: any,
     onMouseUp: any,
+    gScore: any,
+    fScore: any,
+    hScore: any
 }
 
 function Node({row, col, isStart, isEnd, isWall, onMouseDown, onMouseEnter, onMouseUp}: AppProps) {

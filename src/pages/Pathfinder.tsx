@@ -1,6 +1,7 @@
 import React from 'react'
 import Node from '../components/Node'
 import { dijkstra, getShortestPath } from '../algos/dijkstra'
+import { astar } from '../algos/astar'
 import CreatePost from '../components/CreatePost'
 
 var START_ROW2: any = 7
@@ -26,6 +27,9 @@ function Pathfinder() {
         visited: boolean,
         isWall: boolean,
         previous: any,
+        gScore: any,
+        fScore: any,
+        hScore: any
     }
     
 
@@ -39,6 +43,9 @@ function Pathfinder() {
             visited: false,
             isWall: false,
             previous: null,
+            gScore: Infinity,
+            fScore: Infinity,
+            hScore: null
         }
     }
 
@@ -127,10 +134,18 @@ function Pathfinder() {
     }
 
 
-    function startAnimation() {
+    function startAnimationDijkstra() {
         const start = grid[START_ROW][START_COL]
         const end = grid[END_ROW][END_COL]
         const visitedNodesOrdered: any = dijkstra(grid, start, end)
+        const nodesShortestPath = getShortestPath(end)
+        animatePathfinder(visitedNodesOrdered, nodesShortestPath)
+    }
+
+    function startAnimationAStar() {
+        const start = grid[START_ROW][START_COL]
+        const end = grid[END_ROW][END_COL]
+        const visitedNodesOrdered: Node[] = astar(grid, start, end)
         const nodesShortestPath = getShortestPath(end)
         animatePathfinder(visitedNodesOrdered, nodesShortestPath)
     }
@@ -235,7 +250,8 @@ function Pathfinder() {
 
     return <div className="pathfinder">
         <div className="menu">
-            <button onClick={() => startAnimation()}>Dijkstra</button>
+            <button onClick={() => startAnimationDijkstra()}>Dijkstra</button>
+            <button onClick={() => startAnimationAStar()}>A* (A Star)</button>
             <button onClick={() => clearGrid()}>Clear Grid</button>
             {inputGridSize()}
         </div>
@@ -243,7 +259,7 @@ function Pathfinder() {
             {grid.map((row, rowKey) => {
                 return <div key={rowKey}>
                     {row.map((node, nodeKey) => {
-                        const {row, col, isStart, isEnd, isWall} = node
+                        const {row, col, isStart, isEnd, isWall, gScore, fScore, hScore} = node
                         return (
                         <Node
                             key={nodeKey}
@@ -252,6 +268,9 @@ function Pathfinder() {
                             isStart={isStart}
                             isEnd={isEnd}
                             isWall={isWall}
+                            gScore={gScore}
+                            fScore={fScore}
+                            hScore={hScore}
                             onMouseDown={(row: number, col: number) => handleMouseDown(row, col)}
                             onMouseEnter={(row: number, col: number) => handleMouseEnter(row, col)}
                             onMouseUp={() => handleMouseUp()}
