@@ -204,16 +204,7 @@ function Pathfinder() {
         return (<div className="gridInput">
             <div className="setStart">
                 <h3>Set Start Point</h3>
-                <input
-                    type="number"
-                    name="startRow"
-                    id="startRow"
-                    min="0"
-                    max={grid.length - 1}
-                    defaultValue={START_ROW}
-                    onChange={setGridSize}
-                ></input>
-                <input
+                X: <input
                     type="number"
                     name="startCol"
                     id="startCol"
@@ -222,26 +213,35 @@ function Pathfinder() {
                     defaultValue={START_COL}
                     onChange={setGridSize}
                 ></input>
+                Y: <input
+                    type="number"
+                    name="startRow"
+                    id="startRow"
+                    min="0"
+                    max={grid.length - 1}
+                    defaultValue={START_ROW}
+                    onChange={setGridSize}
+                ></input>
             </div>
 
             <div className="setEnd">
                 <h3>Set End Point</h3>
-                <input
-                    type="number"
-                    name="endRow"
-                    id="endRow"
-                    min="0"
-                    max={grid.length - 1}
-                    defaultValue={END_ROW}
-                    onChange={setGridSize}
-                ></input>
-                <input
+                X: <input
                     type="number"
                     name="endCol"
                     id="endCol"
                     min="0"
                     max={grid[0].length - 1}
                     defaultValue={END_COL}
+                    onChange={setGridSize}
+                ></input>
+                Y: <input
+                    type="number"
+                    name="endRow"
+                    id="endRow"
+                    min="0"
+                    max={grid.length - 1}
+                    defaultValue={END_ROW}
                     onChange={setGridSize}
                 ></input>
             </div>
